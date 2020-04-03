@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post">
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" autocomplete="off" autofocus class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" name="suscribe_newsletter" id="suscribe_newsletter">
+            <label class="form-check-label" for="suscribe_newsletter">Suscribe me to the newsletter</label>
+        </div>
+        <div class="form-group">
+            <label for="sport">Sport</label>
+            <select class="form-control" name="sport" id="sport">
+              <option disabled selected value="">Select your sport</option>
+              <option value="soccer">Soccer</option>
+              <option value="martial_arts">Martial arts</option>
+              <option value="handball">Handball</option>
+              <option value="vollerball">VolleyBall</option>
+            </select>
+        </div>
+        <!-- Genre TODO -->
+        <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="genre" id="genre_male" value="male">
+              <label class="form-check-label" for="genre_male">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genre" id="genre_female" value="female">
+            <label class="form-check-label" for="genre_female">Female</label>
+        </div>
+        <!-- TODO -->
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+    <script>
+        document.querySelector('form').onsubmit = function() {
+            // Check that the form is filled
+            let errors = []
+            if (!document.querySelector('#email').value) {
+                errors.push("Provide an email");
+            }
+            if (!document.querySelector('#sport').value) {
+                errors.push("Provide a sport");
+            }
+            if (!document.querySelector('#genre_male').checked && !document.querySelector('#genre_female').checked) {
+                errors.push("Provide genre");
+            }
+
+            // Show alert with errors in the form
+            if (errors.length) {
+                let message = "";
+                for (let error of errors) {
+                    message += error + "\n";
+                }
+                alert(message);
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+    </script>
+
+{% endblock %}

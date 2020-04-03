@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Email</th>
+              <th scope="col">Suscribed</th>
+              <th scope="col">Sport</th>
+              <th scope="col">Genre</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for register in registers %}
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{ register["email"] }}</td>
+                  <td>{{ register["suscribe_newsletter"] }}</td>
+                  <td>{{ register.sport }}</td>
+                  <td>{{ register["genre"] }}</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+{% endblock %}

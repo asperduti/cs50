@@ -1,0 +1,20 @@
+body {
+    background-color: #c0c0c0;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+#name-header {
+    color: rgb(61, 68, 81);
+}
+
+#profesion-header {
+    font-size: xx-large;
+}
+
+.img-mw-150 {
+    width: 100%;
+    max-width: 150px;
+}
